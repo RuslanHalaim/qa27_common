@@ -1,0 +1,42 @@
+#!/bin/bash
+
+cd ~
+echo "We are here:"
+pwd
+mkdir test
+cd test
+mkdir test{1..5}
+echo "Now here:"
+pwd
+echo "..and dir list:"
+ls
+work_dir=test1
+cd $work_dir
+touch text{1,2}.txt; touch son{1..3}.json
+echo "folder $work_dir files listing:"
+ls
+ls > text1.txt
+cd ..
+mv ./test1/son* ./test2/
+cp ./test1/text* ./test3/
+echo "copied & moved - done:"
+echo "test1:"
+ls ./test1
+echo "test2:"
+ls ./test2
+echo "test3:"
+ls ./test3
+pwd
+echo "searching the file with \"3\"...."
+find -name *3.*
+ls ~/ >> ~/test/test3/text1.txt
+cd ~/test/test3
+file=text1.txt
+echo "whole file:"
+cat $file
+echo "5 first lines:"
+head -5 $file
+echo "4 last lines"
+tail -4 $file
+echo "local time:"
+date
